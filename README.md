@@ -8,6 +8,32 @@ Official Swift SDK for the HayBTech Payment Gateway -- integrate mobile money pa
 
 ---
 
+
+## Intégration par IA (Prompt pour Marchands)
+
+Si vous utilisez un assistant IA (comme Cursor, GitHub Copilot, ChatGPT, Claude, etc.), vous pouvez copier-coller le prompt suivant pour intégrer ce SDK de A à Z dans votre projet :
+
+```text
+Agis en tant qu'expert en développement iOS. Je souhaite intégrer le SDK iOS de HayBTech (`HayBTechSDK`) dans mon application mobile native pour permettre aux utilisateurs de payer de A à Z.
+
+Voici ma stack technique actuelle :
+- Interface utilisateur : [ex: SwiftUI, UIKit]
+- Gestion de l'état : [ex: @StateObject, Combine, Swift Concurrency]
+- Backend : [ex: Mon backend propre en Node.js, ou intégration directe si applicable]
+
+*Note de sécurité : Pour des raisons de sécurité, l'initiation du paiement doit toujours se faire via mon serveur backend pour ne pas exposer la clé secrète dans l'application mobile. Le SDK iOS sert à présenter l'interface ou gérer le flux de redirection/retour dans l'application.*
+
+Tâches à accomplir dans le code généré :
+1. **Appel de Checkout Backend** : Implémenter la fonction réseau qui appelle mon serveur backend `/api/checkout` pour générer une transaction et récupérer la `payment_url`.
+2. **Affichage du Guichet de Paiement** : Implémenter le composant SwiftUI (ou UIKit) (ex: en utilisant `WebKit / WKWebView` ou le contrôleur fourni par le SDK iOS de HayBTech) pour afficher la page de paiement sécurisée de manière fluide et professionnelle.
+3. **Gestion des callbacks de retour (Deep Linking)** : Configurer le comportement de l'application lorsque le paiement est terminé et que l'utilisateur clique sur le bouton de retour (gestion des URLs de type `monapp://success` ou `monapp://cancel`).
+4. **Validation de l'état final** : Effectuer un appel de vérification vers mon serveur backend sur le statut final de la transaction pour s'assurer que le paiement a bien été validé avant de débloquer le contenu dans l'application mobile.
+
+Génère le code Swift moderne et les configurations nécessaires de A à Z.
+```
+
+---
+
 ## SECURITY WARNING
 
 **NEVER use your Secret Key (`sk_...`) in an iOS app.**
@@ -167,6 +193,5 @@ class PaymentViewController: UIViewController {
 | Swift       | 5.7+    |
 | Xcode       | 14.0+   |
 
----
-
 MIT License
+
